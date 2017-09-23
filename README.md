@@ -2,6 +2,10 @@ ESP32 Alexa Client
 =======================
 This is a work in progress version of an Alexa client.
 
+## About this fork
+
+This fork is our attempt to make this app runs on DycodeX's ESPectro32 development board. 
+
 ## Status
 
 <ul>
