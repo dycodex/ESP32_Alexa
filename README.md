@@ -30,7 +30,7 @@ You need to have an authentication token.
 
 ## How To Use It
 
-Once everything is setup, let it boot. A maniacal laugh will confirm that it is ready to receive orders. Press the GPIO0 button on your dev board to activate the microphone.
+Once everything is setup, let it boot. A maniacal laugh will confirm that it is ready to receive orders. Press the `GPIO4` button on your dev board (Button `B` on ESPectro32) to activate the microphone.
 
 ## Downloading Required Software
 
@@ -52,7 +52,7 @@ Add /path/to/xtensa-esp32-elf/bin to your PATH:
 
 ## Building
 
-Execute 'make menuconfig' and configure your serial port, leave the rest at default settings and then execute 'make flash'.
+Make sure to `git submodule update --init` on root folder before building. Then execute `make menuconfig` and configure your serial port, leave the rest at default settings and then execute `make flash`.
 
 ## Connecting the I2S codec
 
@@ -67,11 +67,11 @@ However, any I2S codec should work.
 Generic wiring:
 
 ```
-ESP pin   - I2S signal
+ESPectro32 pin  - I2S signal
 ----------------------
-GPIO25/DAC1   - LRCK
-GPIO26/DAC2   - BCLK
-GPIO22        - DATA
+GPIO25/DAC1     - LRCK
+GPIO26/DAC2     - BCLK
+GPIO32          - DATA
 ```
 
 If you're using the MAX98357A, connect GND to ground and Vin to +5V (or +3.3V if +5V is unavailable). SD can remain unconnected, and GAIN too unless you want to make it louder or lower. I also recommend using a potentiometer for volume regulation.
@@ -80,11 +80,11 @@ If you're using the MAX98357A, connect GND to ground and Vin to +5V (or +3.3V if
 
 Connect the I2S microphone like this:
 ```
-ESP pin   - I2S signal
+ESPectro32 pin     - I2S signal
 ----------------------
-GPIO18   - LRCK
-GPIO17   - BCLK
-GPIO05   - DATA
+GPIO05              - LRCK
+GPIO17              - BCLK
+GPIO16              - DATA
 ```
 
 These are known to work:
