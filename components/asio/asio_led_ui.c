@@ -19,7 +19,7 @@ asio_result_t on_led_ui_cb(asio_task_t *task, void *arg, void *user_data)
     switch(task->state)
     {
         case ASIO_TASK_NEW:
-            led_ui_init(gpio_pin, 2);
+            led_ui_init(gpio_pin, 1);//2);
             task->state = ASIO_TASK_RUNNING;
         break;
 

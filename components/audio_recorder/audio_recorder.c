@@ -29,12 +29,20 @@ void audio_recorder_init()
 			.intr_alloc_flags = ESP_INTR_FLAG_LEVEL1        // Interrupt level 1
 	};
 
-	i2s_pin_config_t pin_config_rx = {
-        .bck_io_num = GPIO_NUM_17,
-        .ws_io_num = GPIO_NUM_18,
-        .data_out_num = I2S_PIN_NO_CHANGE,
-        .data_in_num = GPIO_NUM_5
-    };
+	// i2s_pin_config_t pin_config_rx = {
+    //     .bck_io_num = GPIO_NUM_17,
+    //     .ws_io_num = GPIO_NUM_18,
+    //     .data_out_num = I2S_PIN_NO_CHANGE,
+    //     .data_in_num = GPIO_NUM_5
+    // };
+
+    //by Andri
+    i2s_pin_config_t pin_config_rx = {
+		.bck_io_num = GPIO_NUM_17, 
+		.ws_io_num = GPIO_NUM_5, 
+		.data_out_num = I2S_PIN_NO_CHANGE,
+		.data_in_num = GPIO_NUM_16
+	};
 
     i2s_driver_install(I2S_NUM_1, &i2s_config, 0, NULL);
     i2s_set_pin(I2S_NUM_1, &pin_config_rx);

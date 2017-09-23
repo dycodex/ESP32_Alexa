@@ -575,7 +575,7 @@ int alexa_init()
     create_alexa_session(&alexa_session);
 
     /* init led ui */
-    asio_new_generic_task("led_ui", alexa_session->registry, on_led_ui_cb, GPIO_NUM_4, NULL);
+    asio_new_generic_task("led_ui", alexa_session->registry, on_led_ui_cb, GPIO_NUM_27, NULL);
 
 
     /* init wifi */
@@ -585,7 +585,8 @@ int alexa_init()
     // create I2S config
     // configure_audio_hw(alexa_session->player_config);
 
-    asio_new_gpio_task(alexa_session->registry, GPIO_NUM_0, alexa_gpio_handler, alexa_session);
+    //asio_new_gpio_task(alexa_session->registry, GPIO_NUM_0, alexa_gpio_handler, alexa_session);
+    asio_new_gpio_task(alexa_session->registry, GPIO_NUM_4, alexa_gpio_handler, alexa_session);
 
     /* refresh auth token when wifi is connected */
     asio_new_generic_task("refresh_auth_token", alexa_session->registry, on_wifi_connected_cb, alexa_session->event_group, alexa_session);

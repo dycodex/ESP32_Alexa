@@ -61,6 +61,10 @@ static int on_header_value_cb(http_parser *parser, const char *at, size_t length
             return -1;
         }
     }
+    else {
+        ESP_LOGE(TAG, "unknown content-type: %s. Default to audio/mpeg", at);
+        content_type = AUDIO_MPEG; //by Andri
+    }
 
     return 0;
 }

@@ -36,6 +36,8 @@ void handle_speak_directive(alexa_session_t *alexa_session, cJSON *directive)
 
 static void start_web_radio(char *play_url)
 {
+    ESP_LOGI(TAG, "playing web radio at url %s", play_url);
+
     // init web radio
     web_radio_t *radio_config = calloc(1, sizeof(web_radio_t));
     radio_config->url = play_url;

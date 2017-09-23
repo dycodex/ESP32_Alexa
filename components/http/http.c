@@ -209,7 +209,8 @@ static int handle_https(url_t *url, http_parser_settings *callbacks, void *user_
         }
 
         len = ret;
-        ESP_LOGI(TAG, "%d bytes read", len);
+        //ESP_LOGI(TAG, "%d bytes read", len);
+        ESP_LOGD(TAG, "%d bytes read", len); //by Andri
 
         /* Print response directly to stdout as it is read
         for(int i = 0; i < len; i++) {

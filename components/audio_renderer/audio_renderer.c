@@ -20,6 +20,10 @@
 #include "audio_player.h"
 #include "audio_renderer.h"
 
+//by Andri
+#include "soc/soc.h"
+#include "soc/io_mux_reg.h"
+
 #define TAG "renderer"
 
 
@@ -63,11 +67,18 @@ static void init_i2s(renderer_config_t *config)
             .intr_alloc_flags = ESP_INTR_FLAG_LEVEL1        // Interrupt level 1
     };
 
+    // i2s_pin_config_t pin_config = {
+    //         .bck_io_num = GPIO_NUM_26,
+    //         .ws_io_num = GPIO_NUM_25,
+    //         .data_out_num = GPIO_NUM_22,
+    //         .data_in_num = I2S_PIN_NO_CHANGE
+    // };
+    //by Andri
     i2s_pin_config_t pin_config = {
-            .bck_io_num = GPIO_NUM_26,
-            .ws_io_num = GPIO_NUM_25,
-            .data_out_num = GPIO_NUM_22,
-            .data_in_num = I2S_PIN_NO_CHANGE
+        .bck_io_num = GPIO_NUM_26,
+        .ws_io_num = GPIO_NUM_25,
+        .data_out_num = GPIO_NUM_32,
+        .data_in_num = I2S_PIN_NO_CHANGE
     };
 
     i2s_driver_install(config->i2s_num, &i2s_config, 1, &i2s_event_queue);
@@ -241,6 +252,10 @@ void renderer_init(renderer_config_t *config)
     if(config->output_mode == I2S_MERUS) {
         init_ma120(0x50); // setup ma120x0p and initial volume
     }
+
+    //by Andri
+    WRITE_PERI_REG(PIN_CTRL, READ_PERI_REG(PIN_CTRL)&0xFFFFFFF0);
+	PIN_FUNC_SELECT (PERIPHS_IO_MUX_GPIO0_U, FUNC_GPIO0_CLK_OUT1);
 }
 
 

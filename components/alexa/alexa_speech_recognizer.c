@@ -124,7 +124,7 @@ ssize_t send_speech_read_callback(nghttp2_session *session, int32_t stream_id,
             }
 
             bytes_out_total += bytes_written;
-            printf("bytes_out: %d\n", bytes_written);
+            //printf("bytes_out: %d\n", bytes_written);
 
             break;
 
